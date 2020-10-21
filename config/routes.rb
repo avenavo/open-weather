@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :sessions, only: %i[create destroy]
       resource :registrations, only: %i[create destroy]
-      resources :users_cities, only: %i[create destroy show index]
+      resources :users_cities, only: %i[create destroy show index] do
+        resource :forecast, only: :show
+      end
     end
   end
 end
