@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::API
   rescue_from Api::ParamsValidator::InvalidParams, with: :bad_request!
   rescue_from JWT::DecodeError, with: :unauthorized!
+  rescue_from OpenWeatherCityValidator::InvalidCity, with: :unprocessable_entity!
 
   private
 
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::API
 
   def unauthorized!
     render json: { messages: ['Not signed in'] }, status: 401
+  end
+
+  def unprocessable_entity!(exception)
+    render json: { messages: [exception.message] }, status: 422
   end
 
   def authenticate_user!

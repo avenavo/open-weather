@@ -2,13 +2,16 @@
 
 module OpenWeather
   class Forecast
-    def initialize(city, client = OpenWeather::Client.new)
-      @city = city
+    def initialize(client = OpenWeather::Client.new)
       @client = client
     end
 
-    def fetch(options = {})
-      client.forecast(city, options)
+    def fetch_by_name(name, options = {})
+      client.forecast(options.merge(q: name))
+    end
+
+    def fetch_by_id(id, options = {})
+      client.forecast(options.merge(id: id))
     end
 
     private

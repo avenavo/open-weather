@@ -2,13 +2,12 @@
 
 module OpenWeather
   class Response
-    attr_reader :status, :message, :list
+    attr_reader :status, :message, :body
 
     def initialize(response)
-      body = JSON.parse(response)
+      @body = JSON.parse(response)
       @status = body['cod']
       @message = body['message']
-      @list = body['list']
     end
 
     def success?
