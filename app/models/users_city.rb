@@ -6,4 +6,5 @@ class UsersCity < ApplicationRecord
 
   delegate :name, to: :city
   delegate :country, to: :city
+  delegate :external_id, to: :city
 end
