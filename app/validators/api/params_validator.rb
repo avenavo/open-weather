@@ -11,6 +11,8 @@ module Api
     def validate!(params)
       result = validator.new.call(params.to_unsafe_h)
       raise InvalidParams, result.errors.to_h.to_json unless result.success?
+
+      result.to_h
     end
 
     private

@@ -6,12 +6,12 @@ module Api
       before_action :authenticate_user!, only: :destroy
 
       def destroy
-        ::Jwt::RevokeToken.new(auth_token).call
+        ::Jwt::RevokeToken.call(auth_token)
         render json: {}, status: 200
       end
 
       def create
-        Api::ParamsValidator.new(Api::Sessions::CreateValidator).validate!(params)
+        ::Api::ParamsValidator.new(Api::Sessions::CreateValidator).validate!(params)
 
         user = User.find_by(email: params[:email])
 
@@ -20,7 +20,7 @@ module Api
           return
         end
 
-        token = Jwt::GenerateAuthToken.new(user).call
+        token = ::Jwt::GenerateAuthToken.new(user).call
 
         render json: { token: token }, status: 201
       end
