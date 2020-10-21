@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'net/http'
 
 module OpenWeather
   class Client
-    HOST = 'https://api.openweathermap.org/data/2.5'.freeze
+    HOST = 'https://api.openweathermap.org/data/2.5'
+
     def initialize(api_key: Rails.configuration.open_weather_token)
       @api_key = api_key
     end

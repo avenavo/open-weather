@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenWeather
   class Forecast
     def initialize(city, client = OpenWeather::Client.new)
