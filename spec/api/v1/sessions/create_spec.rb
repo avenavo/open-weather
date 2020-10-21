@@ -9,7 +9,7 @@ RSpec.describe Api::V1::SessionsController, type: :request do
       response
     end
 
-    context 'with correct params' do
+    context 'with params' do
       let(:params) do
         {
           email: email,
@@ -41,7 +41,7 @@ RSpec.describe Api::V1::SessionsController, type: :request do
       end
     end
 
-    context 'with incorrect params' do
+    context 'without params' do
       let(:params) { {} }
 
       it { expect(subject).to have_http_status(400) }

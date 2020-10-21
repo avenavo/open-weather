@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jwt
-  class RevokeToken
+  class RevokeToken < ApplicationService
     def initialize(auth_token)
       @auth_token = auth_token
     end

@@ -63,3 +63,5 @@ Style/RedundantRegexpEscape:
   Enabled: true
 Style/SlicingWithRange:
   Enabled: true
+Lint/MissingSuper:
+  Enabled: false
