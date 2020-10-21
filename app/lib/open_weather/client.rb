@@ -10,9 +10,9 @@ module OpenWeather
       @api_key = api_key
     end
 
-    def forecast(city, options = {})
+    def forecast(options = {})
       url = "#{HOST}/forecast"
-      fetch(url, options.merge(q: city))
+      fetch(url, options)
     end
 
     def fetch(url, options = {})
