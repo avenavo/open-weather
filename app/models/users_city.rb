@@ -3,4 +3,7 @@
 class UsersCity < ApplicationRecord
   belongs_to :user
   belongs_to :city
+
+  delegate :name, to: :city
+  delegate :country, to: :city
 end

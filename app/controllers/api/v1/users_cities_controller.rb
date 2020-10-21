@@ -17,6 +17,11 @@ module Api
         ::UsersCities::Destroy.call(current_user, params)
         render json: {}, status: 200
       end
+
+      def show
+        users_city = current_user.users_cities.eager_load(:city).find(params[:id])
+        render json: UsersCitySerializer.new(users_city).serializable_hash, status: 200
+      end
     end
   end
 end
