@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   rescue_from Api::ParamsValidator::InvalidParams, with: :bad_request!
   rescue_from JWT::DecodeError, with: :unauthorized!
   rescue_from OpenWeatherCityValidator::InvalidCity, with: :unprocessable_entity!
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found!
 
   private
 
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::API
 
   def unprocessable_entity!(exception)
     render json: { messages: [exception.message] }, status: 422
+  end
+
+  def not_found!
+    render json: { messages: ['Not found'] }, status: 404
   end
 
   def authenticate_user!

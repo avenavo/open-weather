@@ -12,6 +12,11 @@ module Api
 
         render json: {}, status: 201
       end
+
+      def destroy
+        ::UsersCities::Destroy.call(current_user, params)
+        render json: {}, status: 200
+      end
     end
   end
 end
