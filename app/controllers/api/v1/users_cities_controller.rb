@@ -22,6 +22,11 @@ module Api
         users_city = current_user.users_cities.eager_load(:city).find(params[:id])
         render json: UsersCitySerializer.new(users_city).serializable_hash, status: 200
       end
+
+      def index
+        users_cities = current_user.users_cities.eager_load(:city)
+        render json: UsersCitySerializer.new(users_cities).serializable_hash, status: 200
+      end
     end
   end
 end
