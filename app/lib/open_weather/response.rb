@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenWeather
   class Response
     attr_reader :status, :message, :list
