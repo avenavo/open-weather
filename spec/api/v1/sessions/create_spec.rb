@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::V1::SessionsController, type: :controller do
+RSpec.describe Api::V1::SessionsController, type: :request do
   describe 'POST /api/v1/sessions' do
     subject do
-      post :create, params: params
+      post '/api/v1/sessions', params: params
       response
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
         context 'with valid password' do
           let(:password) { :password }
 
-          it { expect(subject).to have_http_status(200) }
+          it { expect(subject).to have_http_status(201) }
         end
       end
 
