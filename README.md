@@ -8,7 +8,7 @@ OPEN_WEATHER_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxx
 HMAC_SECRET=some_secret
 ```
 
-#### 2. Build an docker image and run containers
+#### 2. Build a docker image and run containers
 ```
 docker-compose up
 ```
